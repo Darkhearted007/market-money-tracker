@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.MyMoneyBook" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:colorAccent">#1f7a4d</item>
+        <item name="android:navigationBarColor">#f7faf8</item>
+        <item name="android:statusBarColor">#f7faf8</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+</resources>
