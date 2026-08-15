@@ -1,0 +1,1 @@
+CREATE INDEX idx_money_entries_user_date ON money_entries(user_id, entry_date DESC, id DESC)
