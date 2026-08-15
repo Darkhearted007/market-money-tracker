@@ -1,9 +1,43 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#1f7a4d"><title>My Money Book — Market Money Tracker</title><link rel="stylesheet" href="/theme.css?v=2"><script src="/__hatchable/auth.js"></script><script src="/app.js?v=2" defer></script></head><body>
-<div class="app-shell"><header class="topbar"><div class="brand"><div class="brand-mark">₦</div><div class="brand-text"><strong>My Money Book</strong><span>My market, my money</span></div></div><div id="datePill" class="date-pill"></div></header>
-<main id="app" hidden><section class="hero"><div class="small">Money left today</div><div id="left" class="big">₦0</div><div class="hint">Money in minus money out.</div></section>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#1f7a4d">
+<title>My Money Book — Market Money Tracker</title>
+<link rel="stylesheet" href="/theme.css?v=2">
+<script src="/__hatchable/auth.js"></script>
+<script src="/app.js?v=2" defer></script>
+<script src="/waste.js?v=1" defer></script>
+</head>
+<body>
+<div class="app-shell">
+<header class="topbar"><div class="brand"><div class="brand-mark">₦</div><div class="brand-text"><strong>My Money Book</strong><span>My market, my money</span></div></div><div id="datePill" class="date-pill"></div></header>
+<main id="app" hidden>
+<section class="hero"><div class="small">Money left today</div><div id="left" class="big">₦0</div><div class="hint">Money in minus money out.</div></section>
 <section class="actions"><button id="inBtn" class="action action-in"><div class="action-icon">＋</div><div><div class="action-label">Money came in</div><div class="action-help">Sales or money you received</div></div></button><button id="outBtn" class="action action-out"><div class="action-icon">−</div><div><div class="action-label">Money went out</div><div class="action-help">Food, transport, stock or bills</div></div></button></section>
-<div id="error" class="error" hidden></div><section><div class="section-head"><h2>Today</h2><span id="count">0 records</span></div><div class="card"><div class="total-grid"><div class="total-card total-in"><p>Money came in</p><strong id="totalIn">₦0</strong></div><div class="total-card total-out"><p>Money went out</p><strong id="totalOut">₦0</strong></div></div><div class="total-card total-left"><p>What is left</p><strong id="totalLeft">₦0</strong></div></div></section>
-<section><div class="section-head"><h2>What happened</h2><span>Newest first</span></div><div id="history" class="card"></div></section></main><div id="loading" class="card loading">Opening your money book…</div></div>
-<div id="modal" class="modal-backdrop" hidden><section class="sheet"><div class="sheet-head"><h2 id="modalTitle">Money came in</h2><button id="closeBtn" class="close">×</button></div><p id="modalHelp" class="muted">How much money did you receive?</p><div class="field"><label for="amount">Amount in naira</label><input id="amount" inputmode="decimal" type="number" min="1" step="1" placeholder="0"></div><div class="quick"><button data-quick="500">₦500</button><button data-quick="1000">₦1k</button><button data-quick="2000">₦2k</button><button data-quick="5000">₦5k</button></div><div class="field"><label for="note">What was it? (optional)</label><input id="note" maxlength="160" placeholder="e.g. tomatoes, transport, sales"></div><div id="modalError" class="error" hidden></div><button id="saveBtn" class="save">Save it</button></section></div><div class="bottom"><button id="signout" class="signout">Sign out</button></div>
+<section class="waste-module">
+  <div class="section-head"><h2>Market waste</h2><span id="wasteMarketName">Set up market</span></div>
+  <div class="waste-summary card">
+    <div><span>Open jobs</span><strong id="wasteOpen">0</strong></div>
+    <div><span>Delivered</span><strong id="wasteDelivered">0</strong></div>
+    <div><span>Waste tracked</span><strong id="wasteKg">0 kg</strong></div>
+  </div>
+  <div class="waste-actions">
+    <button id="setupMarketBtn" class="secondary-btn">Market setup</button>
+    <button id="requestWasteBtn" class="secondary-btn">Request collection</button>
+    <button id="addTruckerBtn" class="secondary-btn">Add trucker</button>
+    <button id="addFacilityBtn" class="secondary-btn">Add destination</button>
+  </div>
+  <div id="wasteError" class="error" hidden></div>
+  <div class="section-head"><h2>Collection jobs</h2><span id="wasteJobCount">0</span></div>
+  <div id="wasteJobs" class="card"></div>
+</section>
+<div id="error" class="error" hidden></div>
+<section><div class="section-head"><h2>Today</h2><span id="count">0 records</span></div><div class="card"><div class="total-grid"><div class="total-card total-in"><p>Money came in</p><strong id="totalIn">₦0</strong></div><div class="total-card total-out"><p>Money went out</p><strong id="totalOut">₦0</strong></div></div><div class="total-card total-left"><p>What is left</p><strong id="totalLeft">₦0</strong></div></div></section>
+<section><div class="section-head"><h2>What happened</h2><span>Newest first</span></div><div id="history" class="card"></div></section>
+</main>
+<div id="loading" class="card loading">Opening your money book…</div>
+</div>
+<div id="modal" class="modal-backdrop" hidden><section class="sheet"><div class="sheet-head"><h2 id="modalTitle">Money came in</h2><button id="closeBtn" class="close">×</button></div><p id="modalHelp" class="muted">How much money did you receive?</p><div class="field"><label for="amount">Amount in naira</label><input id="amount" inputmode="decimal" type="number" min="1" step="1" placeholder="0"></div><div class="quick"><button data-quick="500">₦500</button><button data-quick="1000">₦1k</button><button data-quick="2000">₦2k</button><button data-quick="5000">₦5k</button></div><div class="field"><label for="note">What was it? (optional)</label><input id="note" maxlength="160" placeholder="e.g. tomatoes, transport, sales"></div><div id="modalError" class="error" hidden></div><button id="saveBtn" class="save">Save it</button></section></div>
+<div id="wasteModal" class="modal-backdrop" hidden><section class="sheet"><div class="sheet-head"><h2 id="wasteModalTitle">Market waste</h2><button id="wasteCloseBtn" class="close">×</button></div><p id="wasteModalHelp" class="muted"></p><div id="wasteForm"></div><div id="wasteModalError" class="error" hidden></div><button id="wasteSaveBtn" class="save">Save</button></section></div>
+<div class="bottom"><button id="signout" class="signout">Sign out</button></div>
 </body></html>
